@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חישוב סכום מספרים מתחלקים ב-3</title>
+</head>
+<body>
+    <h1>חישוב סכום המספרים המתחלקים ב-3</h1>
+    <p>המספר N הוא: <span id="number">7</span></p>
+    <h2>התוצאה:</h2>
+    <div id="result"></div>
+
+    <script>
+        // קביעת המספר N
+        const N = 7; // כאן אפשר לשנות את המספר לפי הצורך
+        let sum = 0;
+
+        // חישוב הסכום של המספרים המתחלקים ב-3
+        for (let i = 1; i <= N; i++) {
+            if (i % 3 === 0) {
+                sum += i;
+            }
+        }
+
+        // הצגת התוצאה
+        document.getElementById('result').innerText = 'סכום המספרים מ-1 עד ' + N + ' המתחלקים ב-3 הוא: ' + sum;
+    </script>
+</body>
+</html>

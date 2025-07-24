@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="grade">קלט ציון של תלמיד:</label><br>
+    <input type="number" id="grade"><br><br>
+    
+    <button onclick="evaluateGrade()">הערכה</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function evaluateGrade() {
+        const grade = document.getElementById('grade').valueAsNumber;
+        
+        if (!isNaN(grade)) {
+            let evaluation;
+            
+            if (grade < 55) {
+                evaluation = 'בלתי מספיק';
+            } else if (grade >= 55 && grade <= 64) {
+                evaluation = 'מספיק';
+            } else if (grade >= 65 && grade <= 74) {
+                evaluation = 'כמעט טוב';
+            } else if (grade >= 75 && grade <= 84) {
+                evaluation = 'טוב';
+            } else if (grade >= 85 && grade <= 94) {
+                evaluation = 'טוב מאוד';
+            } else if (grade >= 95) {
+                evaluation = 'מצוין';
+            }
+            
+            document.getElementById('result').innerText = evaluation;
+        } else {
+            document.getElementById('result').innerText = 'נא להזין ציון חוקי.';
+        }
+    }
+</script>
+
+</body>
+</html>

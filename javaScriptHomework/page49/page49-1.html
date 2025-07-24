@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מטריצה של מדדים חודשיים ושנתיים</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>מטריצה של מדדים חודשיים ושנתיים</h1>
+    <table id="metricsTable"></table>
+
+    <script>
+        // יצירת מטריצה בגודל 10x13
+        const metrics = [];
+        let number = 0;
+
+        for (let i = 0; i < 10; i++) {
+            const yearMetrics = [];
+            for (let j = 0; j < 12; j++) {
+                yearMetrics.push(number++);
+            }
+            // הוספת המדד השנתי
+            yearMetrics.push(number++);
+            metrics.push(yearMetrics);
+        }
+
+        // הצגת המטריצה בטבלה
+        const table = document.getElementById('metricsTable');
+        
+        for (let i = 0; i < metrics.length; i++) {
+            const row = document.createElement('tr');
+            for (let j = 0; j < metrics[i].length; j++) {
+                const cell = document.createElement('td');
+                cell.textContent = metrics[i][j];
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
+        }
+    </script>
+</body>
+</html>

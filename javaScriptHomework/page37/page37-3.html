@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ממוצעי ציונים</title>
+</head>
+<body>
+    <h1>ממוצעי ציונים של תלמידים</h1>
+    <div id="results"></div>
+    <div id="schoolAverage"></div>
+
+    <script>
+        // יצירת מערך של 100 תלמידים, כל תלמיד עם 10 ציונים אקראיים בין 0 ל-100
+        const numberOfStudents = 100;
+        const scoresPerStudent = 10;
+        let studentsScores = [];
+
+        for (let i = 0; i < numberOfStudents; i++) {
+            let scores = [];
+            for (let j = 0; j < scoresPerStudent; j++) {
+                scores.push(Math.floor(Math.random() * 101)); // ציונים אקראיים בין 0 ל-100
+            }
+            studentsScores.push(scores);
+        }
+
+        // חישוב ממוצע ציונים לכל תלמיד
+        let resultsHTML = '';
+        let totalSchoolScore = 0;
+        let totalScoresCount = 0;
+
+        for (let i = 0; i < studentsScores.length; i++) {
+            let studentScores = studentsScores[i];
+            let studentTotal = studentScores.reduce((a, b) => a + b, 0);
+            let studentAverage = studentTotal / scoresPerStudent;
+
+            resultsHTML += <p>תלמיד ${i + 1}: ממוצע ציונים = ${studentAverage.toFixed(2)}</p>;
+
+            // עדכון ממוצע בית הספר
+            totalSchoolScore += studentTotal;
+            totalScoresCount += scoresPerStudent;
+        }
+
+        // חישוב ממוצע בית הספר
+        let schoolAverage = totalSchoolScore / totalScoresCount;
+
+        // הצגת התוצאות בדף
+        document.getElementById('results').innerHTML = resultsHTML;
+        document.getElementById('schoolAverage').innerHTML = <h2>ממוצע בית ספר: ${schoolAverage.toFixed(2)}</h2>;
+    </script>
+</body>
+</html>

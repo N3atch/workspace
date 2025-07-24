@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סכום ספרות</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>סכום ספרות</h1>
+        <label for="number">מספר דו־ספרתי:</label>
+        <input type="number" id="number" placeholder="10–99" value="45"><br><br>
+        <button onclick="calculateDigitsSum()">חשב</button>
+        <p id="result"></p>
+    </div>
+
+<script>
+// קבלת השדה המתאים על פי ה-ID
+const numberInput = document.getElementById('number');
+const resultOutput = document.getElementById('result');
+
+// פונקציה עיקרית לחישוב סכום הספרות
+function calculateDigitsSum() {
+    // המרת הערך למספר
+    const number = parseInt(numberInput.value);
+
+    if (!isNaN(number) && String(number).length === 2) { // בדיקת תקינות הערך ואם הוא בן 2 ספרות
+        const tensDigit = Math.floor(number / 10);      // חישוב הספרה העשרונית
+        const onesDigit = number % 10;                 // חישוב הספרה היחידתית
+        const digitsSum = tensDigit + onesDigit;       // חישוב סכום הספרות
+        
+        // פורמט הצגת התוצאה
+        resultOutput.textContent = `סכום הספרות הוא: ${digitsSum}`;
+    } else {
+        alert("אנא הכנס מספר דו־ספרתי תקין!");
+    }
+}
+</script>
+</body>
+</html>

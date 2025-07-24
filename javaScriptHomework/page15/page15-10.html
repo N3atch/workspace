@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שלם זוגי קרוב</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>שלם זוגי קרוב</h1>
+        <label for="number">מספר:</label>
+        <input type="number" id="number" placeholder="מספר כלשהו" value="4.1"><br><br>
+        <button onclick="findClosestEven()">חשב</button>
+        <p id="result"></p>
+    </div>
+
+<script>
+// קבלת השדה המתאים על פי ה-ID
+const numberInput = document.getElementById('number');
+const resultOutput = document.getElementById('result');
+
+// פונקציה עיקרית למציאת השלם הזוגי הקרוב
+function findClosestEven() {
+    // המרת הערך למספר
+    const number = parseFloat(numberInput.value);
+
+    if (!isNaN(number)) { // בדיקת תקינות הערך
+        const roundedUp = Math.ceil(number); // עגלה את המספר למעלה
+        const closestEven = roundedUp % 2 === 0 ? roundedUp : roundedUp + 1; // מציאת השלם הזוגי הקרוב
+        
+        // פורמט הצגת התוצאה
+        resultOutput.textContent = `השלם הזוגי הקרוב הוא: ${closestEven}`;
+    } else {
+        alert("אנא הכנס ערך מספרי תקין!");
+    }
+}
+</script>
+</body>
+</html>

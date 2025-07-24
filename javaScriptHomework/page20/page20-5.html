@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="month">קלט מספר חודש (1-12):</label><br>
+    <input type="number" id="month"><br><br>
+    
+    <label for="year">קלט שנה:</label><br>
+    <input type="number" id="year"><br><br>
+    
+    <button onclick="displayDays()">הראה מספר ימים</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function displayDays() {
+        const month = document.getElementById('month').valueAsNumber;
+        const year = document.getElementById('year').valueAsNumber;
+        
+        if (!isNaN(month) && !isNaN(year) && month >= 1 && month <= 12) {
+            let days;
+            
+            // מחשב אם השנה היא מעוברת
+            const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            
+            switch (month) {
+                case 2: // פברואר
+                    days = isLeapYear ? 29 : 28;
+                    break;
+                case 4: // אפריל
+                case 6: // יוני
+                case 9: // ספטמבר
+                case 11: // נובמבר
+                    days = 30;
+                    break;
+                default:
+                    days = 31;
+            }
+            
+            document.getElementById('result').innerText = `בחודש המבוקש יש ${days} ימים.`;
+        } else {
+            document.getElementById('result').innerText = 'נא להזין חודש ושנה חוקיים.';
+        }
+    }
+</script>
+
+</body>
+</html>

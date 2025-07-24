@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример расположения изображений</title>
+    <style>
+        /* Основная родительская оболочка */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+        .container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+            margin: 3% auto;
+        }
+
+        /* Большая картинка */
+        .main-image {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+
+        }
+
+        /* Блок для маленьких картинок */
+        .sub-images {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Централизация блока */
+            display: flex;
+            gap: 10px;
+        }
+            .sub-images1 {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Централизация блока */
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Маленькие картинки */
+        .sub-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+            .sub-image1 {
+            width: 400px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Tasks</h1>
+    <div class="container">
+
+        <img src="/htmlAndCss/lib/images/3.jpg" alt="Большая картинка" class="main-image">
+        <div class="sub-images">
+            <img src="/htmlAndCss/lib/images/4.png" alt="Маленькая картинка 2" class="sub-image">
+            <img src="/htmlAndCss/lib/images/4.png" alt="Маленькая картинка 3" class="sub-image">
+            <img src="/htmlAndCss/lib/images/4.png" alt="Маленькая картинка 4" class="sub-image">
+        </div>
+
+        <div class="sub-images1">
+            <img src="/htmlAndCss/lib/images/2.png" alt="Маленькая картинка 1" class="sub-image1">
+        </div>
+</body>
+</html>

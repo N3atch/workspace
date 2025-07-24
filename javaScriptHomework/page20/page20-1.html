@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="num1">ערך ראשון:</label><br>
+    <input type="number" id="num1"><br><br>
+    
+    <label for="num2">ערך שני:</label><br>
+    <input type="number" id="num2"><br><br>
+    
+    <label for="num3">ערך שלישי:</label><br>
+    <input type="number" id="num3"><br><br>
+    
+    <button onclick="sortNumbers()">סדר מספרים</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function sortNumbers() {
+        const num1 = document.getElementById('num1').valueAsNumber;
+        const num2 = document.getElementById('num2').valueAsNumber;
+        const num3 = document.getElementById('num3').valueAsNumber;
+        
+        if (!isNaN(num1) && !isNaN(num2) && !isNaN(num3)) {
+            const numbers = [num1, num2, num3];
+            numbers.sort((a, b) => a - b); // סידור מספרים מהקטן לגדול
+            
+            document.getElementById('result').innerText = numbers.join(', ');
+        } else {
+            document.getElementById('result').innerText = 'נא להזין מספרים חוקיים.';
+        }
+    }
+</script>
+
+</body>
+</html>

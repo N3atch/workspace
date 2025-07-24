@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="num1">ערך ראשון:</label><br>
+    <input type="number" id="num1"><br><br>
+    
+    <label for="num2">ערך שני:</label><br>
+    <input type="number" id="num2"><br><br>
+    
+    <button onclick="showMax()">הראה את הגדול ביותר</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function showMax() {
+        const num1 = document.getElementById('num1').valueAsNumber;
+        const num2 = document.getElementById('num2').valueAsNumber;
+        
+        // בדיקה אם הערכים הם מספרים חוקיים
+        if (!isNaN(num1) && !isNaN(num2)) {
+            // מציג את הערך הגדול ביותר
+            document.getElementById('result').innerText = Math.max(num1, num2);
+        } else {
+            document.getElementById('result').innerText = 'נא להזין מספרים חוקיים.';
+        }
+    }
+</script>
+
+</body>
+</html>
