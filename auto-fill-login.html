@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Login Helper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            direction: rtl;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <h1>עזר התחברות אוטומטית</h1>
+    
+    <div class="info">
+        <h3>פרטי התחברות:</h3>
+        <p><strong>שם משתמש:</strong> admin</p>
+        <p><strong>סיסמה:</strong> admin123</p>
+    </div>
+
+    <div class="info">
+        <h3>הוראות:</h3>
+        <ol>
+            <li>פתח את הדף: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></li>
+            <li>לחץ על הכפתור למטה</li>
+            <li>הקוד ינסה למלא את השדות אוטומטית</li>
+        </ol>
+    </div>
+
+    <button onclick="fillLogin()">מלא שדות התחברות</button>
+    <button onclick="window.open('http://localhost:3000', '_blank')">פתח דף התחברות</button>
+
+    <script>
+        function fillLogin() {
+            // Open the login page
+            const loginWindow = window.open('http://localhost:3000/login', '_blank');
+            
+            // Wait a bit for the page to load, then try to fill
+            setTimeout(() => {
+                try {
+                    // This won't work due to CORS, but we can provide instructions
+                    alert('לא ניתן למלא אוטומטית בגלל הגבלות אבטחה של הדפדפן.\n\nאנא הזן ידנית:\nשם משתמש: admin\nסיסמה: admin123');
+                } catch (e) {
+                    console.log('Cannot access cross-origin window');
+                }
+            }, 2000);
+        }
+
+        // Bookmarklet code that can be used
+        const bookmarklet = `
+javascript:(function(){
+    const username = document.querySelector('input[type="text"], input[name*="username"], input[id*="username"]');
+    const password = document.querySelector('input[type="password"], input[name*="password"], input[id*="password"]');
+    if(username) username.value = 'admin';
+    if(password) password.value = 'admin123';
+    if(username && password) {
+        const form = username.closest('form');
+        if(form) {
+            setTimeout(() => form.submit(), 500);
+        }
+    }
+})();
+        `;
+
+        console.log('Bookmarklet code:', bookmarklet);
+    </script>
+
+    <div class="info" style="margin-top: 20px;">
+        <h3>אלטרנטיבה: Bookmarklet</h3>
+        <p>גרור את הקישור הבא לסרגל הסימניות שלך, ואז לחץ עליו בדף ההתחברות:</p>
+        <a href="javascript:(function(){const u=document.querySelector('input[type=&quot;text&quot;],input[name*=&quot;username&quot;]');const p=document.querySelector('input[type=&quot;password&quot;]');if(u)u.value='admin';if(p)p.value='admin123';if(u&&p){const f=u.closest('form');if(f)setTimeout(()=>f.submit(),500);}})();" style="background:#4CAF50;color:white;padding:10px;text-decoration:none;border-radius:5px;display:inline-block;margin-top:10px;">מלא והתחבר אוטומטית</a>
+    </div>
+</body>
+</html>
