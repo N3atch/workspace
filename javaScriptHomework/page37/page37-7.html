@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שלמים בין זוגות</title>
+</head>
+<body>
+    <h1>שלמים בין זוגות מספרים</h1>
+    <div id="results"></div>
+
+    <script>
+        // הגדרת עשרה שלמים
+        const numbers = [9, 12, 8, 8, 15, 10, 20, 5, 3, 7];
+        let resultsHTML = '';
+
+        // פונקציה להציג שלמים בין שני מספרים
+        function displayIntegersBetween(num1, num2) {
+            let start = Math.min(num1, num2);
+            let end = Math.max(num1, num2);
+            let integers = [];
+
+            for (let i = start; i <= end; i++) {
+                integers.push(i);
+            }
+
+            return integers.join(', ');
+        }
+
+        // לולאה על כל זוגות המספרים
+        for (let i = 0; i < numbers.length; i++) {
+            for (let j = i + 1; j < numbers.length; j++) {
+                let integersBetween = displayIntegersBetween(numbers[i], numbers[j]);
+                resultsHTML += <p>בין ${numbers[i]} ל-${numbers[j]}: ${integersBetween}</p>;
+            }
+        }
+
+        // הצגת התוצאות בדף
+        document.getElementById('results').innerHTML = resultsHTML;
+    </script>
+</body>
+</html>

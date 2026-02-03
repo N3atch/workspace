@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חישוב עצרת</title>
+</head>
+<body>
+    <h1>חישוב עצרת של N</h1>
+    <p>המספר N הוא: <span id="number">5</span></p>
+    <h2>התוצאה:</h2>
+    <div id="result"></div>
+
+    <script>
+        // קביעת המספר N
+        const N = 5; // כאן אפשר לשנות את המספר לפי הצורך
+        let factorial = 1;
+
+        // חישוב עצרת
+        for (let i = 1; i <= N; i++) {
+            factorial *= i;
+        }
+
+        // הצגת התוצאה
+        document.getElementById('result').innerText = N + '! = ' + factorial;
+    </script>
+</body>
+</html>

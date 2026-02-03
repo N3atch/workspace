@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הדפסת נתונים במיקומים מסוימים</title>
+</head>
+<body>
+    <h1>הדפסת נתונים במיקומים 3, 6, 9...</h1>
+    <h2>המספרים:</h2>
+    <div id="numbers"></div>
+    <h2>הנתונים במיקומים המבוקשים:</h2>
+    <div id="result"></div>
+
+    <script>
+        // מערך של מספרים לדוגמה
+        const numbersArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+        // הצגת המספרים
+        document.getElementById('numbers').innerText = numbersArray.join(', ');
+
+        // משתנה לאחסון התוצאות
+        let selectedNumbers = [];
+
+        // לולאה להדפסת המספרים במיקומים 3, 6, 9...
+        for (let i = 2; i < numbersArray.length; i += 3) {
+            selectedNumbers.push(numbersArray[i]);
+        }
+
+        // הצגת התוצאות
+        document.getElementById('result').innerText = selectedNumbers.join(', ');
+    </script>
+</body>
+</html>

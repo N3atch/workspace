@@ -1,0 +1,162 @@
+<!-- HTML Структура: -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            /* background-color: #f4f4f4; */
+            margin-top: 1%;
+           }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+.container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    overflow: middle;
+    margin: 0 auto; /* Центрируем блок по горизонтали */
+}
+
+Большая картинка
+.main-image {
+    width: 100%;
+    height: auto;
+    width: 800px;
+    height: 800px;
+    vertical-align: middle;
+}
+
+/* Блок для маленьких картинок */
+.sub-images {
+    position: middle;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Централизация блока */
+    display: flex;
+    gap: 10px;
+}
+
+/* Маленькие картинки */
+.sub-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            background-color: white;
+            margin-bottom: 100px;
+        }
+        
+        input[type=text], input[type=datetime-local] {
+            width: calc((100% / 3) - 10px); /* Разделяем пространство равномерно */
+            height: 40px;
+            margin-right: 10px;
+            padding-left: 10px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        button:hover {
+            background-color: #218838;
+        }
+        
+        ul li {
+            list-style-type: none;
+            position: relative;
+            padding: 10px;
+            background-color: white;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            overflow: hidden;
+            word-wrap: break-word;
+            transition: opacity 0.3s linear;
+        }
+        
+        ul li span {
+            float: left;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        ul li small {
+            clear: both;
+            display: block;
+            color: #aaa;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+        
+        ul li button.delete {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: red;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        ul li:hover button.delete {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>My Tasks</h1>
+        <!-- <img src="/htmlAndCss/lib/images/3.jpg" alt="Большая картинка" class="main-image">
+        <div class="sub-images">
+            <img src="/htmlAndCss/lib/images/4.png" alt="Маленькая картинка 1" class="sub-image">
+            <img src="/htmlAndCss/lib/images/4.png" alt="Маленькая картинка 2" class="sub-image">
+            <img src="/htmlAndCss/lib/images/4.png" alt="Маленькая картинка 3" class="sub-image"> -->
+
+    <!-- Форма добавления новой задачи -->
+    <form id="taskForm">
+        <input type="text" name="description" placeholder="Task description..." required/>
+        <input type="datetime-local" name="dueDateTime" placeholder="Date..." required/>
+        <button type="submit">Add task</button>
+    </form>
+    
+    <!-- Список текущих задач -->
+    <ul id="tasksList"></ul>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+#para {
+    font-size: 25px;
+}
+
+/* font size 25 ; color blue */
+
+
+.gold {
+    color: gold;
+}
+
+/* font size 45 ; color gold */
+
+
+p {
+    color: blue;
+    font-size: 45px;
+}
+
+/* font size 45 ; color blue */
+
+[href="http://www.google.com/"] {
+    font-size: 30px;
+}
+
+[href *="google"] {
+    font-size: 30px;
+    background-color: red;
+}
+
+[href ^="http"] {
+    font-size: 30px;
+    background-color: yellow;
+}
+
+[href $="com"] {
+    font-size: 30px;
+    background-color: pink;
+}

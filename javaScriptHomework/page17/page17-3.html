@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="num">קלט שלם:</label><br>
+    <input type="number" id="num"><br><br>
+    
+    <button onclick="checkParity()">בדוק</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function checkParity() {
+        const number = document.getElementById('num').valueAsNumber;
+        
+        if (!isNaN(number)) { // בדיקה אם הערך הוא מספר חוקי
+            if (number % 2 === 0) {
+                document.getElementById('result').innerText = 'Even'; // זוגי
+            } else {
+                document.getElementById('result').innerText = 'Odd'; // אי-זוגי
+            }
+        } else {
+            document.getElementById('result').innerText = 'נא להזין מספר חוקי.';
+        }
+    }
+</script>
+
+</body>
+</html>

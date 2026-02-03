@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אורך סרט קולנוע</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>אורך סרט קולנוע</h1>
+        <label for="duration">אורך הסרט (בדקות):</label>
+        <input type="number" id="duration" placeholder="90–150" value="120"><br><br>
+        <button onclick="convertDuration()">חשב</button>
+        <p id="result"></p>
+    </div>
+
+<Script>
+//  ID - קבלת השדה המתאים על פי ה
+const durationInput = document.getElementById('duration');
+const resultOutput = document.getElementById('result');
+
+// פונקציה עיקרית לחישוב האורך בשעות ודקות
+function convertDuration() {
+    // המרת הערך למספר
+    const totalMinutes = parseInt(durationInput.value);
+
+    if (!isNaN(totalMinutes)) { // בדיקת תקינות הערך
+        const hours = Math.floor(totalMinutes / 60);       // חישוב השעות
+        const minutes = totalMinutes % 60;                // חישוב הדקות
+        
+        // פורמט הצגת התוצאה
+        resultOutput.textContent = `אורך הסרט: ${hours} שעות ו-${minutes} דקות`;
+    } else {
+        alert("אנא הכנס ערך מספרי תקין");
+    }
+}
+</Script>
+</body>
+</html>

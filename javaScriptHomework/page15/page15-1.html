@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סכום וממוצע של שלושה מספרים</title>
+</head>
+<body dir="rtl">
+    <h1 >נחשב את הסכום והממוצע של שלושה מספרים:</h1>
+    
+    <!-- יצירת שדות לקליטת הערכים -->
+    <label for="num1">מספר ראשון</label><br>
+    <input type="number" id="num1"><br>
+    
+    <label for="num2">מספר שני</label><br>
+    <input type="number" id="num2"><br>
+    
+    <label for="num3">מספר שלישי</label><br>
+    <input type="number" id="num3"><br>
+    
+    <!-- כפתור לפעולת החישוב -->
+    <button onclick="calculateSumAndAverage()">חשב</button>
+    
+    <!-- מקום להצגת התוצאה -->
+    <p id="result"></p>
+
+<script>
+// קבלת השדות המתאימים על פי ה-ID
+const num1Input = document.getElementById('num1');
+const num2Input = document.getElementById('num2');
+const num3Input = document.getElementById('num3');
+const resultOutput = document.getElementById('result');
+
+// פונקציה עיקרית לחישוב הסכום והממוצע
+function calculateSumAndAverage() {
+    // המרת הערכים למספרים
+    const num1 = parseFloat(num1Input.value);
+    const num2 = parseFloat(num2Input.value);
+    const num3 = parseFloat(num3Input.value);
+
+    if (!isNaN(num1) && !isNaN(num2) && !isNaN(num3)) { // בדיקת תקינות הערכים
+        const sum = num1 + num2 + num3;               // חישוב הסכום
+        const average = sum / 3;                      // חישוב הממוצע
+        
+        // פורמט הצגת התוצאה
+        resultOutput.textContent = `סכום: ${sum}, ממוצע: ${average.toFixed(2)}`;
+    } else {
+        alert("אנא הכנס ערכים מספריים תקינים!");
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h2>מערכת משוואות</h2>
+    <p>A*x + B*y = C</p>
+    <p>D*x + E*y = F</p>
+    <label for="A">A:</label><br>
+    <input type="number" id="A"><br><br>
+    
+    <label for="B">B:</label><br>
+    <input type="number" id="B"><br><br>
+    
+    <label for="C">C:</label><br>
+    <input type="number" id="C"><br><br>
+    
+    <label for="D">D:</label><br>
+    <input type="number" id="D"><br><br>
+    
+    <label for="E">E:</label><br>
+    <input type="number" id="E"><br><br>
+    
+    <label for="F">F:</label><br>
+    <input type="number" id="F"><br><br>
+    
+    <button onclick="solveEquations()">פתר</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function solveEquations() {
+        const A = parseFloat(document.getElementById('A').value);
+        const B = parseFloat(document.getElementById('B').value);
+        const C = parseFloat(document.getElementById('C').value);
+        const D = parseFloat(document.getElementById('D').value);
+        const E = parseFloat(document.getElementById('E').value);
+        const F = parseFloat(document.getElementById('F').value);
+        
+        // מחשב את המכנה
+        const denominator = A*E - B*D;
+        
+        if (denominator === 0) {
+            document.getElementById('result').innerText = 'Equation has no solution';
+        } else {
+            // מחשב את x ו-y על פי נוסחאות העזר
+            const x = (C*E - B*F) / denominator;
+            const y = (A*F - C*D) / denominator;
+            
+            document.getElementById('result').innerText = `x=${x.toFixed(2)}, y=${y.toFixed(2)}`;
+        }
+    }
+</script>
+
+</body>
+</html>

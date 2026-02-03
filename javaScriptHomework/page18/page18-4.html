@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="num">קלט שלם בין 1 ל-9,999:</label><br>
+    <input type="number" min="1" max="9999" id="num"><br><br>
+    
+    <button onclick="countDigits()">חשב מספר ספרות</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function countDigits() {
+        const number = document.getElementById('num').valueAsNumber;
+        
+        if (!isNaN(number) && number >= 1 && number <= 9999) {
+            const digitsCount = String(number).length;
+            document.getElementById('result').innerText = `מספר הספרות הוא: ${digitsCount}`;
+        } else {
+            document.getElementById('result').innerText = 'נא להזין שלם חוקי בין 1 ל-9,999.';
+        }
+    }
+</script>
+
+</body>
+</html>

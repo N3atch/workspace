@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שלמים בין שני מספרים</title>
+</head>
+<body>
+    <h1>הצגת שלמים בין שני מספרים</h1>
+    <label for="number1">מספר ראשון:</label>
+    <input type="number" id="number1">
+    <br>
+    <label for="number2">מספר שני:</label>
+    <input type="number" id="number2">
+    <br>
+    <button onclick="showIntegers()">הצג שלמים</button>
+
+    <h2>התוצאה:</h2>
+    <div id="result"></div>
+
+    <script>
+        function showIntegers() {
+            const num1 = parseInt(document.getElementById('number1').value);
+            const num2 = parseInt(document.getElementById('number2').value);
+            let result = '';
+
+            // קובעים את הגבולות
+            const start = Math.min(num1, num2);
+            const end = Math.max(num1, num2);
+
+            // יוצרים את הרשימה של השלמים
+            for (let i = start; i <= end; i++) {
+                result += i + '<br>';
+            }
+
+            // מציגים את התוצאה
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>

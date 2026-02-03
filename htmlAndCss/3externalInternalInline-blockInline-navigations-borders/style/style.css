@@ -1,0 +1,17 @@
+p {
+    color: yellow;
+    border: yellow 5px solid
+}
+
+div {
+    font-size: 50px;
+}
+
+
+.articles {
+    background-color: blue;
+}
+
+#thomas {
+    background-color: pink;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="name">שם של תכניתן:</label><br>
+    <input type="text" id="name"><br><br>
+    
+    <label for="salary">משכורת נוכחית:</label><br>
+    <input type="number" id="salary"><br><br>
+    
+    <button onclick="calculateSalaryIncrease()">חשב משכורת חדשה</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateSalaryIncrease() {
+        const name = document.getElementById('name').value.trim();
+        const salary = document.getElementById('salary').valueAsNumber;
+        
+        if (name.length > 0 && !isNaN(salary)) {
+            let newSalary;
+            
+            if ((salary * 1.1) <= 6000) {
+                newSalary = salary * 1.1; // העלאה של 10%
+            } else {
+                newSalary = salary * 1.05; // העלאה של 5%
+            }
+            
+            document.getElementById('result').innerText = `${name}: המשכורת החדשה היא ₪${newSalary.toFixed(2)}`;
+        } else {
+            document.getElementById('result').innerText = 'נא להזין שם ומשכורת חוקיים.';
+        }
+    }
+</script>
+
+</body>
+</html>

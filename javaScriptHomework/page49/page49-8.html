@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מטריצה עם מסגרות</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            height: 30px; /* גובה התאים */
+        }
+    </style>
+</head>
+<body>
+    <h1>מטריצה עם מסגרות</h1>
+    <table id="matrixTable"></table>
+
+    <script>
+        // יצירת מטריצה בגודל 10x10
+        const size = 10;
+        const matrix = Array.from({ length: size }, () => Array(size).fill(0));
+
+        // מילוי המטריצה במספרים לפי המסגרות
+        let layer = 1; // מתחילים מהמסגרת החיצונית
+        let start = 0;
+        let end = size - 1;
+
+        while (start <= end) {
+            // למלא את השכבה החיצונית
+            for (let i = start; i <= end; i++) {
+                matrix[start][i] = layer; // שורה עליונה
+                matrix[end][i] = layer;   // שורה תחתונה
+            }
+            for (let i = start; i <= end; i++) {
+                matrix[i][start] = layer; // עמודה שמאלית
+                matrix[i][end] = layer;   // עמודה ימנית
+            }
+            layer++; // לעבור לשכבה הבאה
+            start++; // להקטין את הטווח
+            end--;   // להקטין את הטווח
+        }
+
+        // הצגת המטריצה בטבלה
+        const table = document.getElementById('matrixTable');
+        
+        for (let i = 0; i < size; i++) {
+            const row = document.createElement('tr');
+            for (let j = 0; j < size; j++) {
+                const cell = document.createElement('td');
+                cell.textContent = matrix[i][j];
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
+        }
+    </script>
+</body>
+</html>

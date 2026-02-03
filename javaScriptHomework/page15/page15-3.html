@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קיבולת סיר</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>קיבולת סיר</h1>
+        <label for="radius">קוטר הסיר (מטרים):</label>
+        <input type="number" id="radius" placeholder="0.1–0.5" value="0.3"><br><br>
+        <label for="height">עומק הסיר (מטרים):</label>
+        <input type="number" id="height" placeholder="0.1–0.3" value="0.2"><br><br>
+        <button onclick="calculateVolume()">חשב</button>
+        <p id="result"></p>
+    </div>
+
+<script>
+// ID קבלת השדות המתאימים על פי ה
+const radiusInput = document.getElementById('radius');
+const heightInput = document.getElementById('height');
+const resultOutput = document.getElementById('result');
+
+// פונקציה עיקרית לחישוב הקיבולת
+function calculateVolume() {
+    // המרת הערכים למספרים
+    const radius = parseFloat(radiusInput.value);
+    const height = parseFloat(heightInput.value);
+
+    if (!isNaN(radius) && !isNaN(height)) { // בדיקת תקינות הערכים
+        const volume = Math.PI * Math.pow(radius, 2) * height; // חישוב הקיבולת (V = πr²h)
+        
+        // פורמט הצגת התוצאה
+        resultOutput.textContent = `קיבולת הסיר: ${volume.toFixed(2)} מטרים מעוקבים`;
+    } else {
+        alert("אנא הכנס ערכים מספריים תקינים");
+    }
+}
+</script>
+</body>
+</html>

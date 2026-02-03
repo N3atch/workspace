@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>מחרוזת</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="name">שם של עצמאי:</label><br>
+    <input type="text" id="name"><br><br>
+    
+    <label for="income">כנסה:</label><br>
+    <input type="number" id="income"><br><br>
+    
+    <button onclick="calculateTax()">חשב מס</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateTax() {
+        const name = document.getElementById('name').value.trim();
+        const income = document.getElementById('income').valueAsNumber;
+        
+        if (name.length > 0 && !isNaN(income)) {
+            let taxAmount = 0;
+            
+            if (income <= 23000) {
+                taxAmount = income * 0.1; // 10%
+            } else if (income <= 74000) {
+                taxAmount = 2300 + (income - 23000) * 0.2; // 20%
+            } else if (income <= 100000) {
+                taxAmount = 12500 + (income - 74000) * 0.3; // 30%
+            } else if (income <= 150000) {
+                taxAmount = 29300 + (income - 100000) * 0.4; // 40%
+            } else {
+                taxAmount = 69300 + (income - 150000) * 0.5; // 50%
+            }
+            
+            document.getElementById('result').innerText = `${name}: הסכום שעליו לשלם מס הוא ₪${taxAmount.toFixed(2)}`;
+        } else {
+            document.getElementById('result').innerText = 'נא להזין שם והכנסה חוקיים.';
+        }
+    }
+</script>
+
+</body>
+</html>
